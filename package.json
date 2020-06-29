@@ -1,0 +1,23 @@
+{
+  "name": "character-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeowB/character-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeowB/character-manager/issues"
+  },
+  "homepage": "https://github.com/MeowB/character-manager#readme",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "jquery-migrate": "^3.0.0"
+  }
+}
