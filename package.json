@@ -8,9 +8,14 @@
     "bootstrap": "^4.5.0",
     "node-sass": "^4.14.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+
+  },
   "scripts": {
-    "scss": "node-sass --watch assets/scss -o assets/css"
+    "scss": "node-sass --watch assets/scss -o assets/css",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -21,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/RasamizafyB/character-manager/issues"
   },
-  "homepage": "https://github.com/RasamizafyB/character-manager#readme"
+  "homepage": "https://github.com/RasamizafyB/character-manager#readme",
+  "keywords": []
 }
