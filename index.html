@@ -31,8 +31,8 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/album.css">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
     <header>
@@ -41,6 +41,7 @@
             <p  class="navbar-brand d-flex align-items-center">
               <strong>Character manager</strong>
             </p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ADD</button>
           </div>
         </div>
     </header>   
@@ -50,28 +51,45 @@
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">
-
-              <template class="templ">
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                      <div class="card-body">
-                          <h1 class="text-dark">Name</h1>
-                        <p class="card-text">Description</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                          </div>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </template>
-
-            <div id="target">
-
+<!--              
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="edit">Edit</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="delete1">Delete</button> -->
+          </div>
+        </div>
+      </div>
+           
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Name</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Short Description</label>
+                  <input type="text" class="form-control" id="recipient-shortDescription">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Image</label>
+                  <input type="file" class="form-control" id="file-selector" onchange="encodeImageFileAsURL(this)">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Description</label>
+                  <textarea class="form-control" id="message-description"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="add-charact">Add character</button>
             </div>
           </div>
         </div>
@@ -84,10 +102,12 @@
         <p>Project character management made by Greg and Bryan</p>
       </div>
     </footer>
-    <script src="./assets/js/app.js"></script>
+  
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/add.js"></script>
     
 </body>
 </html>
