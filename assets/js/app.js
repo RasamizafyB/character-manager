@@ -5,15 +5,17 @@ let charact;
 let charactArray;
 
 
+
 const character = async () =>{
 
     charact = await fetch('https://character-database.becode.xyz/characters');
     charactArray = await charact.json();
-    console.log(charactArray);  
+    //console.log(charactArray);  
     
     const template = document.getElementById('templ');
        
     charactArray.forEach((el) => {
+
         document.querySelector(".row").innerHTML += 
 
             `<div class="col-md-4">
@@ -29,8 +31,8 @@ const character = async () =>{
                             <p class="card-text">${el.shortDescription}</p>
                     <div class="d-flex justify-content-between align-items-center">
                     <div class="button">
-                    <button type="button" class="btn btn-sm btn-outline-secondary edit">Edit</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary delete1">Delete</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary edit" data-toggle="modal" data-target="#editCharacter">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary delete1" data-toggle="modal" data-target="#deleteCharacter">Delete</button>
                     </div>
                 </div>
               </div>
@@ -38,7 +40,9 @@ const character = async () =>{
           </div>`
     }); 
 }
-character();
+character().then(() => {
+    Delete();
+});
 
 
 let reader;
@@ -88,44 +92,68 @@ document.getElementById('add-charact').addEventListener('click', function(){
             }),
             body: JSON.stringify(await createCharact()),
         });
+        document.location.reload();
         return pushCharact;
     };
 });
 
-   let buttunEdite = document.getElementsByClassName('edit');
-   console.log(buttunEdite);
-   
-   for(i = 0; i < buttunEdite.length; i++){
-    buttunEdite[i].addEventListener('click', function(){
+    let buttunDelete;
 
-        // alert('Are you sure to deleted the character?')
-        // if(alert == true){
-        //     deleteCharact(heroId);
-        // }else{
-        //     return
+    function Delete(){
+
+        buttunDelete = document.getElementsByClassName('delete1');
+        //console.log(buttunDelete);
+            for(let i = 0; i < buttunDelete.length; i++){
+                buttunDelete[i].addEventListener('click', async (e) => {
+                 
+                    let deleteId = e.target.parentElement.parentElement.parentElement.parentElement.id
+                   
+                    document.getElementById('confirm').addEventListener('click', async function(){
+                        await fetch("https://character-database.becode.xyz/characters/" + deleteId, {
+                            method: "DELETE"
+                        })
+                        document.location.reload();
+                   });
+                })      
+            }         
+    }
+    Delete();
+
+    let buttunEdite;
+
+    function Edite(){
+        let editName = document.getElementById('editName');
+        let editShortDescription = document.getElementById('editShortDescription');
+        let editDescription = document.getElementById('editDescription');
+        // let newCharact = {
+        //     description : editDescription = el.description,
+        //     shortDescription : editShortDescription,
+        //     name : editName,
+        //     image : result1,
         // }
-       // let id = this.id;
-        console.log("bonjour");
-        
-      });
-   }
 
-//   async function deleteCharact() {
-//     // const heroObject = JSON.stringify({
-//     //   id: id
-//     // });
+        buttunEdite = document.getElementsByClassName('edit');
+        console.log(buttunEdite);
+            for(let x = 0; x < buttunEdite.length; x++){
+                buttunEdite[x].addEventListener('click', async (e) => {
+                  
+                    let editId = e.target.parentElement.parentElement.parentElement.parentElement.id
+                   
+                    editName.value = charactArray[0].name;
+                    editDescription.value = charactArray[0].description;
+                    editShortDescription.value = charactArray[0].shortDescription;
 
-//     const delCharact =  "http://localhost:3000/heroes/" + heroId;
-//     await fetch(delCharact , {
-//       method: "DELETE",
-//       headers: new Headers({
-//         "content-type": "application/json"
-//       })
-//     })
-//       .then(response => response.json())
-//       .then(data => console.log(data))
-//       .catch(err => console.error(err));
-//     console.log(heroId);
-//   };
+
+                //     document.getElementById('confirm').addEventListener('click', async function(){
+                //         await fetch("https://character-database.becode.xyz/characters/" + editId, {
+                //             method: "PUT"
+                           
+                //         })
+                //         document.location.reload();
+                //    });
+                })      
+            }         
+    }
+    Edite();
 
 

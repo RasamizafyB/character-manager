@@ -41,7 +41,7 @@
             <p  class="navbar-brand d-flex align-items-center">
               <strong>Character manager</strong>
             </p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">ADD</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCharacter">ADD</button>
           </div>
         </div>
     </header>   
@@ -57,8 +57,10 @@
           </div>
         </div>
       </div>
-           
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     
+      <!-- Add character -->
+
+      <div class="modal fade" id="addCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -78,18 +80,79 @@
                   <input type="text" class="form-control" id="recipient-shortDescription">
                 </div>
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Image</label>
-                  <input type="file" class="form-control" id="file-selector" onchange="encodeImageFileAsURL(this)">
-                </div>
-                <div class="form-group">
                   <label for="message-text" class="col-form-label">Description</label>
                   <textarea class="form-control" id="message-description"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Image</label>
+                  <input type="file" class="form-control" id="file-selector" onchange="encodeImageFileAsURL(this)">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal" id="add-charact">Add character</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirm delete -->
+
+      <div class="modal fade" id="deleteCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Are you sure to delete the character?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="confirm">Confirm</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modifier character -->
+
+      <div class="modal fade" id="editCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Name</label>
+                  <input type="text" class="form-control" id="editName">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Short Description</label>
+                  <input type="text" class="form-control" id="editShortDescription">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Description</label>
+                  <textarea class="form-control" id="editDescription"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Image</label>
+                  <input type="file" class="form-control" id="editFile" onchange="encodeImageFileAsURL(this)">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="editCharact">Edit character</button>
             </div>
           </div>
         </div>
