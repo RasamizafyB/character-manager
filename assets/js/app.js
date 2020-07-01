@@ -81,39 +81,31 @@ function encodeImageFileAsURL(element) {
     convertBase64.readAsDataURL(file);
   }
 
-document.getElementById('add-charact').addEventListener('click', function(){
-    newName = document.getElementById('recipient-name').value;
-    newShortDescription = document.getElementById('recipient-shortDescription').value;
-    newDescription = document.getElementById('message-description').value
-    if(newName == false || newShortDescription == false || newDescription == false){
-        alert('Complet form please'); 
-    }else{
-        addCharact();
-    }
-    async function createCharact() {
-        newCharact = {
-            description : newDescription,
-            shortDescription : newShortDescription,
-            name : newName,
-            image : imgBase64,
-        } 
-        charactArray.push(newCharact);
-        console.log(charactArray);
-        
-        return newCharact;
-    };
-    async function addCharact() {
-        const pushCharact = await fetch("https://character-database.becode.xyz/characters", {
-            method: "POST",
-            headers: new Headers({
-                "Content-Type": "application/json"
-            }),
-            body: JSON.stringify(await createCharact()),
-        });
-        document.location.reload();
-        return pushCharact;
-    };
-});
+function Add(){
+    newName = document.getElementById('recipient-name');
+    newShortDescription = document.getElementById('recipient-shortDescription');
+    newDescription = document.getElementById('message-description');
+    document.getElementById('add-charact').addEventListener('click', async function(){
+        if(newName == false || newShortDescription == false || newDescription == false){
+            alert('Complet form please'); 
+        }else{
+            await fetch("https://character-database.becode.xyz/characters", {
+                method: "POST",
+                headers: new Headers({
+                    "Content-Type": "application/json"
+                }),
+                body: JSON.stringify({
+                    description : newDescription.value,
+                    shortDescription : newShortDescription.value,
+                    name : newName.value,
+                    image : imgBase64,
+                }),
+            });
+            document.location.reload();
+        }      
+    });
+}
+Add();
 
 function Delete(){
     buttunDelete = document.getElementsByClassName('delete1');
