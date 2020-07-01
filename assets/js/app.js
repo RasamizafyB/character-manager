@@ -17,12 +17,19 @@ let imgBase64_1;
 let buttunDelete;
 let deleteId;
 
+let IdCharacter;
+
 let buttunEdite;
 let editName;
 let editImage;
 let editShortDescription;
 let editDescription;
 let editId;
+
+let viewName;
+let viewShortDescription;
+let viewDescription;
+let viewImage;
 
 let body;;
 let characterId = async (id) =>await (await fetch("https://character-database.becode.xyz/characters/" + id)).json();
@@ -51,10 +58,10 @@ const character = async () =>{
                         <button type="button" class="btn btn-sm btn-outline-secondary edit" data-toggle="modal" data-target="#editCharacter" >Edit</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary delete1" data-toggle="modal" data-target="#deleteCharacter">Delete</button>
                     </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>`
+            </div>`
         
     }); 
 }
@@ -111,41 +118,38 @@ document.getElementById('add-charact').addEventListener('click', function(){
 function Delete(){
     buttunDelete = document.getElementsByClassName('delete1');
     //console.log(buttunDelete);
-        for(let i = 0; i < buttunDelete.length; i++){
-            buttunDelete[i].addEventListener('click', async (e) => {
-             
-                deleteId = e.target.parentElement.parentElement.parentElement.parentElement.id
-                //console.log(i);
-               
-                document.getElementById('confirm').addEventListener('click', async function(){
-                    await fetch("https://character-database.becode.xyz/characters/" + deleteId, {
-                        method: "DELETE"
-                    })
-                    document.location.reload();
-               });
-
-            })      
-        }         
+    for(let i = 0; i < buttunDelete.length; i++){
+        buttunDelete[i].addEventListener('click', async (e) => {
+            deleteId = e.target.parentElement.parentElement.parentElement.parentElement.id
+            //console.log(i);
+            document.getElementById('confirm').addEventListener('click', async function(){
+                await fetch("https://character-database.becode.xyz/characters/" + deleteId, {
+                    method: "DELETE"
+                })
+                document.location.reload();
+           });
+        })      
+    }         
 }
 Delete();
 
-function Edite(){
-    editName = document.getElementById('editName');
+function Edite(){ 
     editShortDescription = document.getElementById('editShortDescription');
     editDescription = document.getElementById('editDescription');
     //editImage = document.getElementById('editFile');
+    editName = document.getElementById('editName');
     body = document.querySelector('body');
     body.addEventListener("click", async function (e) {
         if (e.target.classList.contains("edit")) {
            // let indexFromButtonId = e.target.getAttribute("data-edit")
             editId = e.target.parentElement.parentElement.parentElement.parentElement.id
             console.log(editId);
-            let IdCharacter = await characterId(editId)
+            IdCharacter = await characterId(editId)
             //console.log(IdCharacter); 
             editName.value = IdCharacter.name;
             editDescription.value = IdCharacter.description;
             editShortDescription.value = IdCharacter.shortDescription;
-            //editImage.src =  `data:image/jpeg;base64,${IdCharacter.image}`
+           // editImage.value = "data:image/jpeg;base64," + IdCharacter.image;
             document.getElementById('editCharact').addEventListener('click', async function(){
                 await fetch("https://character-database.becode.xyz/characters/" + editId, {
                         method: "PUT",
@@ -167,19 +171,22 @@ function Edite(){
 Edite();
 
 function viewCharact(){
-    viewName = document.getElementById('viewName');
     viewShortDescription = document.getElementById('viewShortDescription');
     viewDescription = document.getElementById('viewDescription');
+    viewImage = document.getElementById('viewImage');
+    viewName = document.getElementById('viewName');
     body = document.querySelector('body');
     body.addEventListener("click", async function (e) {
         if (e.target.classList.contains("view")) {
             editId = e.target.parentElement.parentElement.parentElement.parentElement.id
             console.log(editId);
-            let IdCharacter = await characterId(editId)
+            IdCharacter = await characterId(editId)
             //console.log(IdCharacter); 
             viewName.innerHTML = IdCharacter.name;
             viewDescription.innerHTML = IdCharacter.description;
             viewShortDescription.innerHTML = IdCharacter.shortDescription;
+            viewImage.src = "data:image/jpeg;base64," + IdCharacter.image;
+            console.log(viewImage);
         };
     })
         
