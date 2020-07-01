@@ -1,23 +1,32 @@
 
 // Declaration des variable
 
+    //Get character on api
+
 let charact;
 let charactArray;
+
+    //add character
 
 let newName;
 let newShortDescription;
 let newDescription;
 let newCharact;
 
+    //convert image to base64
+
 let file;
 let convertBase64;
 let imgBase64;
 let imgBase64_1;
 
+    //delete character
+
 let buttunDelete;
 let deleteId;
 
-let IdCharacter;
+
+    //edit character
 
 let buttunEdite;
 let editName;
@@ -26,31 +35,40 @@ let editShortDescription;
 let editDescription;
 let editId;
 
+    //view single character
+
 let viewName;
 let viewShortDescription;
 let viewDescription;
 let viewImage;
 
-let body;;
+    //for the button edit and view
+
+let body;
+
+    //get id character on api
+    
+let IdCharacter;
 let characterId = async (id) =>await (await fetch("https://character-database.becode.xyz/characters/" + id)).json();
+
+//display the characters on HTML
 
 const character = async () =>{
     charact = await fetch('https://character-database.becode.xyz/characters');
-    charactArray = await charact.json();
-    //console.log(charactArray);     
+    charactArray = await charact.json();   
     const template = document.getElementById('templ');
     charactArray.forEach((el) => {
         document.querySelector(".row").innerHTML += 
             `<div class="col-md-4">
                 <div class="card mb-4 shadow-sm" id="${el.id}">
                     <div class="bd-placeholder-img card-img-top"> 
-                        <img src="data:image/jpeg;base64,${el.image}" width="100%" height="300">
+                        <img src="data:image/jpeg;base64,${el.image}" width="100%" height="350">
                             <div class="overlay">
                                 <div class="text">${el.description}</div>
                             </div>
                     </div>
                     <div class="card-body">
-                        <h1 class="text-dark">${el.name}</h1>
+                        <h3 class="text-dark">${el.name}</h3>
                         <p class="card-text">${el.shortDescription}</p>
                     <div class="d-flex justify-content-between align-items-center">
                     <div class="button">
@@ -69,17 +87,25 @@ character().then(() => {
     Delete();
 });
 
+//change the image to base64
+let newImg
 function encodeImageFileAsURL(element) {
     file = element.files[0];
     convertBase64 = new FileReader();
     convertBase64.onloadend = function() {
+        imgBase64_1 = convertBase64.result;
         imgBase64 = convertBase64.result
                 .replace('data:', '')
                 .replace(/^.+,/, '');
-    console.log('RESULT', imgBase64)
+    //console.log('RESULT', imgBase64)
+    //console.log(newImg);
+    let addImage = document.getElementById("addImage")
+    addImage.src = imgBase64_1; 
     }
     convertBase64.readAsDataURL(file);
   }
+
+//Add a new character
 
 function Add(){
     newName = document.getElementById('recipient-name');
@@ -107,13 +133,13 @@ function Add(){
 }
 Add();
 
+//Delete a character
+
 function Delete(){
     buttunDelete = document.getElementsByClassName('delete1');
-    //console.log(buttunDelete);
     for(let i = 0; i < buttunDelete.length; i++){
         buttunDelete[i].addEventListener('click', async (e) => {
             deleteId = e.target.parentElement.parentElement.parentElement.parentElement.id
-            //console.log(i);
             document.getElementById('confirm').addEventListener('click', async function(){
                 await fetch("https://character-database.becode.xyz/characters/" + deleteId, {
                     method: "DELETE"
@@ -125,23 +151,22 @@ function Delete(){
 }
 Delete();
 
+//Edit an existing character
+
 function Edite(){ 
     editShortDescription = document.getElementById('editShortDescription');
     editDescription = document.getElementById('editDescription');
-    //editImage = document.getElementById('editFile');
     editName = document.getElementById('editName');
+    editImage = document.getElementById('editImage');
     body = document.querySelector('body');
     body.addEventListener("click", async function (e) {
         if (e.target.classList.contains("edit")) {
-           // let indexFromButtonId = e.target.getAttribute("data-edit")
             editId = e.target.parentElement.parentElement.parentElement.parentElement.id
-            console.log(editId);
             IdCharacter = await characterId(editId)
-            //console.log(IdCharacter); 
             editName.value = IdCharacter.name;
             editDescription.value = IdCharacter.description;
             editShortDescription.value = IdCharacter.shortDescription;
-           // editImage.value = "data:image/jpeg;base64," + IdCharacter.image;
+            editImage.src = "data:image/jpeg;base64," + IdCharacter.image;
             document.getElementById('editCharact').addEventListener('click', async function(){
                 await fetch("https://character-database.becode.xyz/characters/" + editId, {
                         method: "PUT",
@@ -152,7 +177,7 @@ function Edite(){
                             name: editName.value,
                             description: editDescription.value,
                             shortDescription: editShortDescription.value,
-                            image : imgBase64,
+                            image : imgBase64 || IdCharacter.image,
                           }),
                 })
                 document.location.reload();
@@ -161,6 +186,8 @@ function Edite(){
     });     
 }
 Edite();
+
+//View the select character
 
 function viewCharact(){
     viewShortDescription = document.getElementById('viewShortDescription');
@@ -173,12 +200,11 @@ function viewCharact(){
             editId = e.target.parentElement.parentElement.parentElement.parentElement.id
             console.log(editId);
             IdCharacter = await characterId(editId)
-            //console.log(IdCharacter); 
             viewName.innerHTML = IdCharacter.name;
             viewDescription.innerHTML = IdCharacter.description;
             viewShortDescription.innerHTML = IdCharacter.shortDescription;
             viewImage.src = "data:image/jpeg;base64," + IdCharacter.image;
-            console.log(viewImage);
+            //console.log(viewImage);
         };
     })
         

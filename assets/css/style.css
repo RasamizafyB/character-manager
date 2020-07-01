@@ -39,10 +39,14 @@
     text-align: center;
   }
   .card{
-      height: 550px;
+      height: 600px;
   }
   .button{
       position: absolute;
       bottom: 5%;
   }
+  #viewCharacter{
+    height: 1000px;
+  }
+
   
