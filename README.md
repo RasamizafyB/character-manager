@@ -1,4 +1,4 @@
-# character manager
+# [Character manager](https://rasamizafyb.github.io/character-manager/)
 ## Table of contents
 
 1. [Docs](#docs)
@@ -8,7 +8,7 @@
 <a name="quick-start" ></a>
 ## Docs
 
-documentation: https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/01-javascript/02-character-manager
+Documentation: [here](https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/01-javascript/02-character-manager)
 
 The objectif of the project is to reinforce our knowledge about the Request/Respond cycle.
 
@@ -33,8 +33,8 @@ The objectif of the project is to reinforce our knowledge about the Request/Resp
   * Action to open the character editor.
   * Action to delete a character with a warning pop-up.
 #### P2 - display the full description
-⋅⋅* Name.
-⋅⋅* Long description displayed with MarkDown.
+  * Name.
+  * Long description displayed with MarkDown.
   * Image.
   * Action to open the character editor.
   * Action to delete a character with a warning pop-up.
