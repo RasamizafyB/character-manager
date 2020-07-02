@@ -1,4 +1,4 @@
-# character manager
+# [character manager]()
 ## Table of contents
 
 1. [Docs](#docs)
