@@ -9,6 +9,7 @@ body{
 	box-shadow:  -21px -21px 33px #6a6c6e, 
 			 21px 21px 33px #a2a6a8;
 	border : none;
+	color: #323233;
 }
 .album .py-5 .bg-light {
 background-color:pink ;
@@ -18,7 +19,7 @@ header h1{
 	background: #86898b;
 	box-shadow:  -21px -21px 33px #6a6c6e, 
              21px 21px 33px #a2a6a8;
-	color:#fff;
+	color:#323233;
 	margin:40px auto ;
 	font-weight:300;
 	width:25%;
