@@ -80,7 +80,6 @@ header h1{
 	height:250px;
 	position:relative;
 	z-index:10;
-	/* background:#fff; */
 	padding:15px;
 	bottom:0px;
 	transition: all 0.5s ease;
@@ -105,4 +104,14 @@ header h1{
 }
 .modal-open .container-fluid, .modal-open  .container {
 	-webkit-filter: blur(5px) grayscale(90%);
+}
+@media (max-width : 1024px){
+	header h1{
+		width: 50%;
+	}
+}
+@media (max-width : 500px){
+	header h1{
+		width: 95%;
+	}
 }
