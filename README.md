@@ -18,7 +18,7 @@ The objectif of the project is to reinforce our knowledge about the Request/Resp
 
 | First name | Last name | Github |
 |---|---|---|
-|Scott|Borlon|<a href="https://github.com/MeowB">MeowB</a>
+|Bryan|Rasamizafy|<a href="https://github.com/RasamizafyB">Bryan</a>
 |Antonio|Maita|<a href="https://github.com/AntonioMaita">AntonioMaita</a>
 
 <a name="Project" ></a>
