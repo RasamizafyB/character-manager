@@ -1,4 +1,4 @@
-# [character manager]()
+# [Character manager](https://rasamizafyb.github.io/character-manager/)
 ## Table of contents
 
 1. [Docs](#docs)
