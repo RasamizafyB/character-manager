@@ -1,38 +1,66 @@
-/*class char{
-    constructor(description, id, image, name, shortDescription){
-        this.description = description,
-        this.id = id,
-        this.image = image,
-        this.name = name,
-        this.shortDescription = shortDescription
-    }
-}*/
 
+let charact;
+let charactArray;
 
+let newName;
+let newShortDescription;
+let newDescription;
+let newCharact;
+
+let file;
+let reader;
+let result;
+
+let buttunDelete;
+let deleteId;
+
+let IdCharacter;
+
+let buttunEdite;
+let editName;
+let editImage;
+let editShortDescription;
+let editDescription;
+let editId;
+
+let viewName;
+let viewShortDescription;
+let viewDescription;
+let viewImage;
+
+let body;
+let characterId = async (id) =>await (await fetch("https://character-database.becode.xyz/characters/" + id)).json();
+
+let response=[];
+let response2=[];
 const API_url =  async function (){
 
-    const response = await fetch ('https://character-database.becode.xyz/characters');
-    const response2 = await response.json();
-    let char1 = document.querySelector("#char1");
-    let target = document.getElementById("target");
-    console.log(response2);
+    charact= await fetch ('https://character-database.becode.xyz/characters');
+    charactArray= await charact.json();
+    
+    console.log(charactArray);
   
-    response2.forEach((element, ) => {
+    charactArray.forEach((element, ) => {
         document.querySelector(".row").innerHTML += `
-        <div class="col-lg-4">
-        <button type="submit" class="buttonCreate"><a href="#">Delete</a></button>
-        <button type="submit" class="buttonCreate"><a href="creacharacter.html">Create</a></button>
+        <div class="col-lg-4" id="${element.id}">
+        
         
        <div class="our-team-main">
        
        
        <div class="team-front">
-       <img src="data:image/png;base64,${element.image}" class="img-fluid" id="img1" />
+       <img src="data:image;base64,${element.image}" width="100px" height="100px" class="img-fluid" id="img1">
        <h3 id="name1">${element.name}</h3>
        <p id="short1">${element.shortDescription}</p>
        </div>
        
+       
        <div class="team-back">
+       <div class="button">
+       <button type="button" class="btn btn-sm btn-outline-secondary view" data-toggle="modal" data-target="#viewCharacter">View</button>
+       <button type="button" class="btn btn-sm btn-outline-secondary edit" data-toggle="modal" data-target="#editCharacter">Edit</button>
+       <button type="button" class="btn btn-sm btn-outline-secondary delete1" data-toggle="modal" data-target="#deleteCharacter">Delete</button>
+       </div>
        
        <span id="description1">
        ${element.description}
@@ -49,73 +77,155 @@ const API_url =  async function (){
     });
 };
 
-function generate() {
-    let id = () => {
-      return Math.floor((1 + Math.random()) * 0x10000)
-          .toString(16)
-          .substring(1);
+API_url().then(() => {
+    Delete();
+});
+    
+function encodeImageFileAsURL(element) {
+    file = element.files[0];
+    reader = new FileReader();
+    reader.onloadend = function() {
+        result = reader.result
+        .replace('data:', '')
+        .replace(/^.+,/, '');
+      console.log('RESULT', result);
     }
-      response.json().push(id);
-    }
+    reader.readAsDataURL(file);
+  }
     
     
-    API_url();
 
-/*let charList = [];
-function printChar(data) {
-    for (item of data) {
-        if (item.image) {
-            image64 = item.image
-             console.log(image64);
-        }
-        const div = document.createElement('div');
-        div.classList = 'charCard'
-        const target = document.querySelector('.target');
-         const image64 = item.image;
-        const imgsrc = image64.querySelectorAll('.img');
-        imgsrc.innerHTML= data.imgsrc;
+  
+  
+  document.getElementById('add-charact').addEventListener('click', function(){
 
-        const name = item.name;
-        const short = item.shortDescription;
-        const long = item.description;
-         console.log(name);
 
-       const template = `
-       <div class="col-lg-4">
-       <div class="our-team-main">
-       
-       <div class="team-front">
-       <img src="data:image/png;base64,${image64}" class="img-fluid" id="img1" />
-       <h3 id="name1">${name}</h3>
-       <p id="short1">${short}</p>
-       </div>
-       
-       <div class="team-back">
-       <span id="description1">
-       ${long}
-       </span>
-       </div>
-       
-       </div>
-       </div>
-        `;
+    
 
+    newName = document.getElementById('recipient-name').value;
+    newShortDescription = document.getElementById('recipient-shortDescription').value;
+    newDescription = document.getElementById('message-description').value;
+
+
+    if(newName == false || newShortDescription == false || newDescription == false){
+        alert('Complet form please'); 
+    }else{
+        addCharact();
+    }
+    function createCharact() {
         
-        div.innerHTML = template;
-    }    ;
+         newCharact = {
+            description : newDescription,
+            shortDescription : newShortDescription,
+            name : newName,
+            image : result,
+        }
+       
+        
+       charactArray.push(newCharact);
+       console.log(charactArray);
+        
+        
+        return newCharact;
+    };
+
+     
+    async function addCharact() {
+        const pushCharact = await fetch("https://character-database.becode.xyz/characters", {
+            method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json"
+            }),
+            body: JSON.stringify(await createCharact()),
+        });
+        document.location.reload();
+        return pushCharact;
+    };
+    
+       
+   
+});
 
 
 
+function Delete(){
+    body = document.querySelector('body');
+    body.addEventListener("click", async function (e) {
+        if (e.target.classList.contains("delete1")) {
+             
+            deleteId = e.target.parentElement.parentElement.parentElement.parentElement.id
+            //console.log(deleteId);
+                document.getElementById('confirm').addEventListener('click', async function(){
+                    await fetch("https://character-database.becode.xyz/characters/" + deleteId, {
+                        method: "DELETE"
+                    })
+                    document.location.reload();
+               });
+        };     
+    });         
+}
+Delete();
 
-(async () => {
-    const getChar = async () => { return await axios({ url: API_url }) };
-    const response = await getChar();
-    const data = await response.data;
 
-    data.forEach(element => {
-        charList.push(element);
-    });
+function Edite(){ 
+    editShortDescription = document.getElementById('editShortDescription');
+    editDescription = document.getElementById('editDescription');
+    editImage = document.getElementById('editImage');
+    editName = document.getElementById('editName');
+    body = document.querySelector('body');
+    body.addEventListener("click", async function (e) {
+        if (e.target.classList.contains("edit")) {
+           // let indexFromButtonId = e.target.getAttribute("data-edit")
+            editId = e.target.parentElement.parentElement.parentElement.parentElement.id
+            //console.log(editId);
+            IdCharacter = await characterId(editId)
+            //console.log(IdCharacter); 
+            editName.value = IdCharacter.name;
+            editDescription.value = IdCharacter.description;
+            editShortDescription.value = IdCharacter.shortDescription;
+            editImage.src = "data:image/jpeg;base64," + IdCharacter.image;
+            //console.log(editImage);
+            
+            document.getElementById('editCharact').addEventListener('click', async function(){
+                await fetch("https://character-database.becode.xyz/characters/" + editId, {
+                        method: "PUT",
+                        headers: new Headers({
+                            "Content-type": "application/json; charset=UTF-8",
+                        }),
+                        body: JSON.stringify({
+                            name: editName.value,
+                            description: editDescription.value,
+                            shortDescription: editShortDescription.value,
+                            image : result || IdCharacter.image,
+                          }),
+                })
+                document.location.reload();
+           });
+        }
+    });     
+}
+Edite();
 
-    printChar(data);
-    console.log(data)
-};*/
+
+function View(){ 
+    viewName = document.getElementById('viewName');
+    viewShortDescription = document.getElementById('viewShortDescription');
+    viewDescription = document.getElementById('viewDescription')
+    viewImage = document.getElementById("viewImage")
+    body = document.querySelector('body');
+    body.addEventListener("click", async function (e) {
+        if (e.target.classList.contains("view")) {
+           // let indexFromButtonId = e.target.getAttribute("data-edit")
+            editId = e.target.parentElement.parentElement.parentElement.parentElement.id
+            //console.log(editId);
+            IdCharacter = await characterId(editId)
+            //console.log(IdCharacter); 
+            viewName.innerHTML = IdCharacter.name;
+            viewDescription.innerHTML = IdCharacter.description;
+            viewShortDescription.innerHTML = IdCharacter.shortDescription;
+            viewImage.src = "data:image/jpeg;base64," + IdCharacter.image;
+            //console.log(editImage);
+        }
+    }); 
+}    
+View(); 
