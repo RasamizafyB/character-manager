@@ -39,8 +39,10 @@
     text-align: center;
   }
   .card{
-      height: 600px;
+    height: 600px;
+
   }
+
   .button{
       position: absolute;
       bottom: 5%;

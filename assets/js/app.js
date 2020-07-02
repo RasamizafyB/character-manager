@@ -71,7 +71,7 @@ const character = async () =>{
                         <h3 class="text-dark">${el.name}</h3>
                         <p class="card-text">${el.shortDescription}</p>
                     <div class="d-flex justify-content-between align-items-center">
-                    <div class="button">
+                    <div class="button" style="right: 95px;">
                         <button type="button" class="btn btn-sm btn-outline-secondary view" data-toggle="modal" data-target="#viewCharacter">View</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary edit" data-toggle="modal" data-target="#editCharacter" >Edit</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary delete1" data-toggle="modal" data-target="#deleteCharacter">Delete</button>
