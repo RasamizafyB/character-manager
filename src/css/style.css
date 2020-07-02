@@ -1,30 +1,59 @@
 body
 {
-	background-color:#00bcd4;
+	background-color:#86898b;
 }
 
-.album  {
+#add {
+	margin-left: 25%;
+	margin-bottom: 1%;
+	border-radius: 24px;
+	background: #86898b;
+	box-shadow:  -21px -21px 33px #6a6c6e, 
+			 21px 21px 33px #a2a6a8;
+	border : none;
+}
+
+.album .py-5 .bg-light {
 background-color:pink ;
 }
 
-h1
+
+
+header h1
 {
+	border-radius: 24px;
+	background: #86898b;
+	box-shadow:  -21px -21px 33px #6a6c6e, 
+             21px 21px 33px #a2a6a8;
 	color:#fff;
-	margin:40px 0 60px 0;
+	margin:40px auto ;
 	font-weight:300;
+	width:25%;
+	height : 70px;
+	text-align:center;
+	padding-top : 10px;
 }
 
+#close {
+	margin-left: 40%;
+	margin-right: 40%;
+	margin-bottom: 5%;
+	border-radius: 24px;
+}
 
 
  .our-team-main 
 {
-	
+	border-radius: 24px;
+	background: #86898b;
+	box-shadow:  -21px -21px 33px #6a6c6e, 
+             21px 21px 33px #a2a6a8;
 	width:100%;
 	height:250px;
 	border-bottom:5px #323233 solid;
-	background:#fff;
+	/* background:#fff; */
 	text-align:center;
-	border-radius:10px;
+	/* border-radius:10px; */
 	overflow:hidden;
 	position:relative;
 	transition:0.5s;
@@ -36,7 +65,7 @@ h1
 {
 	border-radius:50%;
 	margin-bottom:20px;
-	width: 90px;
+	width: 100px;
 }
 
  .our-team-main h3 
@@ -52,26 +81,32 @@ h1
 
  .team-back
 {
-	
+	border-radius: 24px;
+	background: linear-gradient(315deg, #797b7d,pink);
+	box-shadow:  -21px -21px 33px #6a6c6e, 
+             21px 21px 33px #a2a6a8;
 	width:100%;
 	height:250px;
 	position:absolute;
 	top:0;
 	left:0;
 	padding:5px 15px 0 15px;
-	text-align:left;
-	background:#fff;
+	/*text-align:left;
+	/* background:#fff; */
 	
 }
 
 .team-front
 {
-	
+	border-radius: 24px;
+	background: #86898b;
+	box-shadow:  -21px -21px 33px #6a6c6e, 
+             21px 21px 33px #a2a6a8;
 	width:100%;
 	height:250px;
 	position:relative;
 	z-index:10;
-	background:#fff;
+	/* background:#fff; */
 	padding:15px;
 	bottom:0px;
 	transition: all 0.5s ease;
@@ -96,3 +131,16 @@ h1
 	
 }
 
+.modal-content {
+	border-radius: 24px;
+	background: linear-gradient(225deg, #A8ABE2, #c6c7c7);
+	
+}
+
+/*.modal-footer {
+
+	background-color:#a2a6a8;
+}*/
+
+.modal-open .container-fluid, .modal-open  .container {
+    -webkit-filter: blur(5px) grayscale(90%);}

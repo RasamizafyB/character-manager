@@ -31,8 +31,6 @@ let viewImage;
 let body;
 let characterId = async (id) =>await (await fetch("https://character-database.becode.xyz/characters/" + id)).json();
 
-let response=[];
-let response2=[];
 const API_url =  async function (){
 
     charact= await fetch ('https://character-database.becode.xyz/characters');
@@ -42,21 +40,21 @@ const API_url =  async function (){
   
     charactArray.forEach((element, ) => {
         document.querySelector(".row").innerHTML += `
-        <div class="col-lg-4" id="${element.id}">
+        <div class="col-lg-4 offset-xs-1" id="${element.id}">
         
         
        <div class="our-team-main">
        
        
        <div class="team-front">
-       <img src="data:image;base64,${element.image}" width="100px" height="100px" class="img-fluid" id="img1">
+       <img src="data:image;base64,${element.image}"  class="img-fluid" id="img1">
        <h3 id="name1">${element.name}</h3>
        <p id="short1">${element.shortDescription}</p>
        </div>
        
        
        <div class="team-back">
-       <div class="button">
+       <div class="button" style="right:95px;">
        <button type="button" class="btn btn-sm btn-outline-secondary view" data-toggle="modal" data-target="#viewCharacter">View</button>
        <button type="button" class="btn btn-sm btn-outline-secondary edit" data-toggle="modal" data-target="#editCharacter">Edit</button>
        <button type="button" class="btn btn-sm btn-outline-secondary delete1" data-toggle="modal" data-target="#deleteCharacter">Delete</button>
