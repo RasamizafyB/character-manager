@@ -32,176 +32,154 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-<header>
-	<h1 class="text-center">Character Manager</h1>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCharacter" id="add">ADD</button>
-</header>
-=======
 
-	<h1 class="text-center">Character Manager</h1>
+  <header>
+  	<h1 class="text-center">Character Manager</h1>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCharacter" id="add">ADD</button>
+  </header>
 	
-	<div class="d-flex flex-row-reverse">
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCharacter">ADD</button><
-	</div>
->>>>>>> 984e93f1da8c7384d8a9d1632258d826058275c3
-		
 	<main role="main">
-    
-		<div class="album py-5 ">
-		<div class="container">
-	
-		<div class="row"></div>
 
-	
-	</div>
-<<<<<<< HEAD
-<!--- Add character -->
-=======
+		<div class="album py-5 ">
+		  <div class="container">
+		    <div class="row">
+          <!--Character-->
+        </div>
+      </div>
+		</div>
 	
 	<!-- Add Character -->
->>>>>>> 984e93f1da8c7384d8a9d1632258d826058275c3
 
-	<div class="modal fade" id="addCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Name</label>
-                  <input type="text" class="form-control" id="recipient-name">
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Short Description</label>
-                  <input type="text" class="form-control" id="recipient-shortDescription">
-                </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Description</label>
-                  <textarea class="form-control" id="message-description"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Image</label>
-                  <input type="file" class="form-control" id="file-selector" onchange="encodeImageFileAsURL(this)">
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" id="add-charact">Add character</button>
-            </div>
+	  <div class="modal fade" id="addCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-	  </div>
-	  
-	  <!-- Confirm delete -->
-
-      <div class="modal fade" id="deleteCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Are you sure to delete the character?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="confirm"  data-dismiss="modal">Confirm</button>
-            </div>
-          </div>
-        </div>
-	  </div>
-	  
-<<<<<<< HEAD
- <!-- Modifier character -->
-
-
-=======
-	<!-- Edit Character -->
-			
->>>>>>> 984e93f1da8c7384d8a9d1632258d826058275c3
-	  <div class="modal fade" id="editCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit Character</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Name</label>
-                  <input type="text" class="form-control" id="editName">
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Short Description</label>
-                  <input type="text" class="form-control" id="editShortDescription">
-                </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">Description</label>
-                  <textarea class="form-control" id="editDescription"></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Image</label>
-                  <input type="file" class="form-control" id="editFile" onchange="encodeImageFileAsURL(this)">
-                  <img id="editImage" src="" alt="Image" width="100%" max-width="100%" max-heigth="100%">
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" id="editCharact">Edit character</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- View Character -->
-      
-      <div class="modal fade" id="viewCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">View Character</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-              <div class="card mb-4 shadow-sm" id="${el.id}">
-                <div class="bd-placeholder-img card-img-top"> 
-                    <img  id="viewImage" src="" width="100%" max-width="100%" max-heigth="100%">
-                </div>
-                <div class="card-body">
-                  <h1 class="text-dark" id="viewName"></h1>
-                  <p class="card-text" id='viewShortDescription'></p>
-                  <p class="card-text" id="viewDescription"></p>
-                </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Name</label>
+                <input type="text" class="form-control" id="recipient-name">
               </div>
-              </div>            
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>        
-            </div>   
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Short Description</label>
+                <input type="text" class="form-control" id="recipient-shortDescription">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">Description</label>
+                <textarea class="form-control" id="message-description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Image</label>
+                <input type="file" class="form-control" id="file-selector" onchange="encodeImageFileAsURL(this)">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="add-charact">Add character</button>
           </div>
         </div>
       </div>
+	  </div>
+  
+	<!-- Confirm delete -->
 
-     
+    <div class="modal fade" id="deleteCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure to delete the character?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="confirm"  data-dismiss="modal">Confirm</button>
+          </div>
+        </div>
+      </div>
+	  </div>
+  
+	<!-- Edit Character -->
+  
+	  <div class="modal fade" id="editCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Character</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Name</label>
+              <input type="text" class="form-control" id="editName">
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Short Description</label>
+              <input type="text" class="form-control" id="editShortDescription">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Description</label>
+              <textarea class="form-control" id="editDescription"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Image</label>
+              <input type="file" class="form-control" id="editFile" onchange="encodeImageFileAsURL(this)">
+              <img id="editImage" src="" alt="Image" width="100%" max-width="100%" max-heigth="100%">
+            </div>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="editCharact">Edit character</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      
+  <!-- View Character -->
 
-	</main>
+    <div class="modal fade" id="viewCharacter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">View Character</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card mb-4 shadow-sm" id="${el.id}">
+              <div class="bd-placeholder-img card-img-top"> 
+                  <img  id="viewImage" src="" width="100%" max-width="100%" max-heigth="100%">
+              </div>
+              <div class="card-body">
+                <h1 class="text-dark" id="viewName"></h1>
+                <p class="card-text" id='viewShortDescription'></p>
+                <p class="card-text" id="viewDescription"></p>
+              </div>
+            </div>
+          </div>            
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>        
+          </div>   
+        </div>
+      </div>
+    </div>
+
+  </main>
+  
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <!--<script>window.jQuery || document.write('<script src="../node_modules/jquery/dist/jquery.slim.min.js"><\/script>')</script>-->
 <script src="src/js/bootstrap.min.js"></script>
