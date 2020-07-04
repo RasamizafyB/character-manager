@@ -116,7 +116,7 @@ header h1{
 	}
 }
 
-@media (max-width: 2160px) {
+@media (min-width: 1921px) {
 	header h1 { 
 		width : 100%;
 	}
